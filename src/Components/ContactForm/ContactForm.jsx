@@ -24,7 +24,8 @@ function Form ({items, onSubmit}) {
           setNumber(value);
           break;
 
-          default: return;
+     default: return;
+
     }
   };
 

@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./Components/App";
-import store from './redux/store';
+import {store, persistor} from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 // import { myAction, myAction2 } from "./redux/actions";
 import { Provider } from "react-redux";
 
@@ -12,10 +13,15 @@ console.log(store.getState());
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.StrictMode> 
     <Provider store={store}>
-    <App />
-    </Provider>
+    <PersistGate loading={null} persistor={persistor}>
+     
+        <App />
+        
+        </PersistGate>
+      </Provider>
+    
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -8,13 +8,13 @@ import * as actions from '../../redux/counter/counter-actions';
   
 
   return (
-    <><div className={styles.counter_box} counter>
+    <><div className={styles.counter_box}>
       <button
         className={styles.btn}
         type="button"
         onClick={()=>onIncrement(step)}
       >increment{step}</button>
-<div  className={styles.value}>{value.toString()}</div>
+<div  className={styles.value}>{value}</div>
       <button
         className={styles.btn}
         type="button"

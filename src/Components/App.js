@@ -5,7 +5,7 @@ import { Title } from "./Container/Container.styled.jsx";
 import ContactList  from "./ContactList/ContactList.jsx";
 import Filter  from "./Filter/Filter.jsx";
 
-import Counter from './Counter/Counter.jsx';
+// import Counter from './Counter/Counter.jsx';
 
 function App () {
  
@@ -24,7 +24,7 @@ function App () {
         <ContactList
 
          />
-        <Counter />
+        {/* <Counter /> */}
       </ContainerApp>
     );
   
