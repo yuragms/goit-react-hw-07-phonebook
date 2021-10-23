@@ -1,0 +1,37 @@
+.btn {
+  border: none;
+  padding: 10px 15px;
+  background-color: teal;
+  color: #fff;
+  font-weight: 500;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 1px 2px 2px 0 rgb(0 0 0 / 0.5);
+  transition: box-shadow 250ms linear;
+}
+
+.btn:active {
+  box-shadow: 2px 5px 2px 0 rgb(0 0 0 / 0.5);
+}
+
+.counter_box {
+  display: flex;
+
+  outline: 1px solid tomato;
+  max-width: 600px;
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 6px 13px;
+  background-color: white;
+  font-size: 20px;
+}
+
+.value {
+  margin-right: 15px;
+  margin-left: 15px;
+  font-size: 64px;
+  font-family: monospace;
+  text-align: center;
+}
