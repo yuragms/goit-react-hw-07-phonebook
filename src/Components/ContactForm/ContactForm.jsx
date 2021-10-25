@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from "uuid";
 import { useCreateContactsMutation, useFetchContactsQuery } from '../../redux/phonebook/phonebookSlice';
 import { ContactForm, Label, Input, Button } from "./ContactForm.styled";
@@ -9,11 +9,16 @@ import { ContactForm, Label, Input, Button } from "./ContactForm.styled";
 
 
 export const Form = () => {
-  const { data, isFetching } = useFetchContactsQuery();
+  const { data: contacts = []} = useFetchContactsQuery();
   const [createContact] = useCreateContactsMutation();
 
   const [name, setName] = useState('');
   const [number, setNumber] =  useState('');
+
+  useEffect(() => {
+    setName('');
+    setNumber('');
+  }, [contacts.length]);
 
  const nameInputId = uuidv4();
  const numberInputId = uuidv4();
@@ -37,13 +42,13 @@ export const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    const isRepeatableContact = data.find(
+    const isRepeatableContact = contacts.find(
       (contact) => contact.name.toLowerCase() === name.toLowerCase()
     );
     if (isRepeatableContact) {
       alert(`${name} is alredy in contacts`);
     } else {
-      createContact(name);
+      createContact({name, number});
     console.log(name, number);
     reset();
     }
