@@ -20,7 +20,7 @@ function App() {
     <ContainerApp>
       <Title>Phonebook</Title>
 
-      {/* <Form /> */}
+      <Form />
       {isFetching && <Spinner />}
       {/* <Title>Contacts</Title> */}
       {/* <Filter/> */}
