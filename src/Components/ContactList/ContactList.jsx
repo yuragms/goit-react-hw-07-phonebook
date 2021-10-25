@@ -1,19 +1,25 @@
 import React from "react";
-// import { connect } from "react-redux";
+import { useSelector } from 'react-redux';
+import { getFilter } from "../../redux/phonebook/phonebook-selectors.js";
 import {List, Item, Button,  } from "./Contactlist.styled.jsx";
-// import * as phonebookActions  from '../../redux/phonebook/phonebook-actions';
-;
-
-
- 
 
 
 
+const ContactList = ({ contacts, onDeleteContact }) => {
 
-const ContactList = ({ contacts, onDeleteContact }) => (
+  const filter = useSelector(getFilter);
   
+  const filteredContacts = contacts.filter(({ name }) =>
+    name.toLowerCase().includes(filter.toLowerCase()),
+  );
+
+  const filteredContactsSort = filteredContacts.sort((a, b) => a.name.localeCompare(b.name));
+
+
+
+  return (
   <List>
-    {contacts.map(({ id, name, number }) => (
+    {filteredContactsSort.map(({ id, name, number }) => (
       <Item key={id}>
         <span>{name}:</span> <span>{number}</span>
         <Button type="button" onClick={() => onDeleteContact(id)}>
@@ -22,32 +28,8 @@ const ContactList = ({ contacts, onDeleteContact }) => (
       </Item>
     ))}
   </List>
-);
+  );
+};
 
 export default ContactList;
 
-//  const getFilteredContacts = (contacts, filter) => {
-//   const normalizedFilter = filter.toLowerCase();
-
-//     return contacts.filter((contact) => 
-//        contact.name.toLowerCase().includes(normalizedFilter)
-//     );
-//   };
-
-
-
-// const mapStateToProps = state => {
-//   const {filter, items} = state.contacts;
- 
-//   const visibleContacts = getFilteredContacts (items, filter);
-
-//  return  {
-//   contacts: visibleContacts,
-// };
-// };
-
-// const mapDispatchToProps = dispatch => ({
-//   onDeleteContact: id => dispatch(phonebookActions.delContact(id)),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
